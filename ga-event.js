@@ -1,80 +1,61 @@
-/*  -----------------------------------------------------------------------------------------
-    Name:            ga-event.js, ga-event.min.js (minified)
-    Purpose:         Capture link events in Google Analytics Event Tracking
-    Dependencies:    jQuery (event binding, async loading), GA (_gaq object)
-    Author:          Andy Merhaut
-    -----------------------------------------------------------------------------------------
-    Description:     We needed to append event tracking to anchor elements unobtrusively, and 
-    customize attributes specified in the Google Analytics ET Guide. Although HTML5 specifies
-    data-* attributes on DOM elements, our current CMS does not support them (in fact, SM's 
-    WYSIWYG editor will nuke any non-XHTML attributes before save). 
-
-    CSS class attribute does allow for n+1 declarations, and is not parsed out of SM, so with 
-    minimal pattern matching we can extend its purpose for storing custom values for event
-    tracking.
-
-    This version appends a mousedown callback handler to anchor elements matching class 
-    'ga-event'. This class is required to enable tracking on links. Mousedown was selected as
-    it is slightly faster than 'click' and is cross-browser compatible to not require a 
-    separate library to handle touch events on a clickable element like a link. Use the
-    patterns below to add custom parameters to each trackable link's CSS class attributes.
-
-    NOTE the classname prefixes are not case-sensitive, but the data portion will be sent to 
-    GA as it is written. CamelCase is preferred. Also, do not include the square brackets [].
-
-    Example:
-    <a href="#" class="ga-event ga-eventcat-MyCategory ga-eventaction-MyClick" title="This is the label">Track Me</a>
-
-    CSS CLASS NAME PATTERNS
-    ga-event = track this element (required)
-    ga-eventcat-[CategoryName] = default:Links
-    ga-eventaction-[ActionName] = default:Click
-    ga-eventlabel-[LabelName] = default:a>title [if using classname, then CamelCaseOnly]
-    ga-eventvalue-[n] = n(int) > -1 default:0
-    ga-eventnoninteraction-[true||false] = default:false (GA: opt_noninteraction)
-
-    Resources:
-    Safari Web Content Guide: Handling Events
-    //developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html
-
-    Event Tracking - Web Tracking (ga.js)
-    //developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide
-    -----------------------------------------------------------------------------------------
-    HISTORY
-    Seq    Date        Initials    Notes
-    -----------------------------------------------------------------------------------------
-    001    02/21/2013    AM        Initial Development
-    002
-    -----------------------------------------------------------------------------------------
+/*
+    ga-event.js Google Analytics Event Tracking (jQuery)
+    Author: Andy Merhaut
+    Use, change, and distribution under MIT License.
 */
 $(function() {
 
-    $('a.ga-event').each(function() {
+    var el, $sel, i, init, t;
+    
+    $sel = $('.ga-event'); //Selector returns element with ga-event class. <a> tags preferred.
+    i = $sel.length;
 
-        var init = gaEvent_Init($(this).attr('class'));
+    while(i--) { //Decrement loop for performance
+
+        el = $sel.eq(i);
+
+        init = gaEvent_Init(el.attr('class'));
 
         //Stores the event label, either classname attr or a>title.
-        var t = init.label.length > 0 ? init.label : (typeof $(this).attr('title') != 'undefined' ? $(this).attr('title') : (typeof $(this).attr('href') != 'undefined' ? $(this).attr('href') : 'Unknown anchor'));
-        //Append to element's onclick event.
-        $(this).mousedown(function(){
+        t = init.label.length > 0 ? init.label : (typeof el.attr('title') != 'undefined' ? el.attr('title') : (typeof el.attr('href') != 'undefined' ? el.attr('href') : 'Unknown anchor'));
+        
+        (function(init, t) {
 
-                
-                //Debug
-                console.log('Category: ' + init.category);
-                console.log('Action: ' + init.action);
-                console.log('Label: ' + t);
-                console.log('Value: ' + init.value);
-                console.log('Non-Interaction: ' + init.opt_noninteraction);
-                
-
-            //_gaq is the global used by GA
-            if (typeof _gaq != "undefined") {
-                _gaq.push(['_trackEvent', init.category, init.action, t, init.value, init.opt_noninteraction]);
-                return true;
+            if (el.touchstart) { //If device has touchstart event, bind to it,
+                el.touchstart(function() {
+                    return gaEvent_TrackEvent(init, t);
+                }); 
+            } else {
+                el.mousedown(function() { //but if not, all devices have mousedown.
+                    return gaEvent_TrackEvent(init, t);
+                }); 
             }
-        });      
-    });
+            
+        }(init, t)); //Bind anonymous function to copy local scope to its respective element.
+        
+    }
 });
+
+/* 
+    Function:  gaEvent_TrackEvent 
+    Params:    Parsed class object, label string.
+    Locals:    none
+*/
+function gaEvent_TrackEvent(evt, label) {
+    
+    //Debug. Uncomment during troubleshooting.
+    //console.log('Category: ' + evt.category);
+    //console.log('Action: ' + evt.action);
+    //console.log('Label: ' + label);
+    //console.log('Value: ' + evt.value);
+    //console.log('Non-Interaction: ' + evt.opt_noninteraction);
+                
+    //_gaq is the global used by GA
+    if (typeof _gaq != "undefined") {
+        _gaq.push(['_trackEvent', evt.category, evt.action, label, evt.value, evt.opt_noninteraction]);
+        return true;
+    }
+}
 
 /* 
     Function:  gaEvent_Init 
