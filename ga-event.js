@@ -21,7 +21,7 @@ $(function() {
         
         (function(init, t) {
 
-            if (el.touchstart) { //If device has touchstart event, bind to it,
+            if (typeof el.touchstart != 'undefined') { //If device has touchstart event, bind to it,
                 el.touchstart(function() {
                     return gaEvent_TrackEvent(init, t);
                 }); 
@@ -44,11 +44,11 @@ $(function() {
 function gaEvent_TrackEvent(evt, label) {
     
     //Debug. Uncomment during troubleshooting.
-    //console.log('Category: ' + evt.category);
-    //console.log('Action: ' + evt.action);
-    //console.log('Label: ' + label);
-    //console.log('Value: ' + evt.value);
-    //console.log('Non-Interaction: ' + evt.opt_noninteraction);
+    console.log('Category: ' + evt.category);
+    console.log('Action: ' + evt.action);
+    console.log('Label: ' + label);
+    console.log('Value: ' + evt.value);
+    console.log('Non-Interaction: ' + evt.opt_noninteraction);
                 
     //_gaq is the global used by GA
     if (typeof _gaq != "undefined") {
