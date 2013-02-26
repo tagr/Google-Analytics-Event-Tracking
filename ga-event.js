@@ -17,11 +17,11 @@ $(function() {
         init = gaEvent_Init(el.attr('class'));
 
         //Stores the event label, either classname attr or a>title.
-        t = init.label.length > 0 ? init.label : (typeof el.attr('title') != 'undefined' ? el.attr('title') : (typeof el.attr('href') != 'undefined' ? el.attr('href') : 'Unknown anchor'));
+        t = init.label.length > 0 ? init.label : (typeof el.attr('title') !== 'undefined' ? el.attr('title') : (typeof el.attr('href') !== 'undefined' ? el.attr('href') : 'Unknown anchor'));
         
         (function(init, t) {
 
-            if (typeof el.touchstart != 'undefined') { //If device has touchstart event, bind to it,
+            if (typeof el.touchstart !== 'undefined') { //If device has touchstart event, bind to it,
                 el.touchstart(function() {
                     return gaEvent_TrackEvent(init, t);
                 }); 
@@ -49,6 +49,7 @@ function gaEvent_TrackEvent(evt, label) {
     console.log('Label: ' + label);
     console.log('Value: ' + evt.value);
     console.log('Non-Interaction: ' + evt.opt_noninteraction);
+    //alert(evt.category);
                 
     //_gaq is the global used by GA
     if (typeof _gaq != "undefined") {
