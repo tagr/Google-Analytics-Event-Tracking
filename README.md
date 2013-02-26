@@ -28,7 +28,7 @@ CamelCase is preferred. Also, do not include the square brackets [].</p>
 <b>Example:</b> 
 &lt;a href="#" class="ga-event ga-eventcat-MyCategory ga-eventaction-MyClick" title="This is the label"&gt;Track Me&lt;/a&gt;
 
-CSS CLASS NAME PATTERNS
+<h3>CSS CLASS NAME PATTERNS</h3>
 <ul>
 <li>ga-event = track this element (required)</li>
 <li>ga-eventcat-[CategoryName] = default:Links</li>
