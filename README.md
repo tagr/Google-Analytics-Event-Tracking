@@ -40,8 +40,7 @@ CamelCase is preferred. Also, do not include the square brackets [].</p>
 
 
 <h3>Resources:</h3>
-<h5>Safari Web Content Guide: Handling Events</h5>
-//developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html
-
-<h5>Event Tracking - Web Tracking (ga.js)</h5>
-//developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide
+<ul>
+<li><a href="//developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html">Safari Web Content Guide: Handling Events</a></li>
+<li><a href="//developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide">Event Tracking - Web Tracking (ga.js)</a></li>
+</ul>
