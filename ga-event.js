@@ -5,32 +5,31 @@
 */
 $(function() {
 
-    var el, $sel, i, init, t;
+    var el, sel, i, init, t;
     
-    $sel = $('.ga-event'); //Selector returns element with ga-event class. <a> tags preferred.
-    i = $sel.length;
+    sel = $('.ga-event'); //Selector returns element with ga-event class. <a> tags preferred.
+    i = sel.length;
 
     while(i--) { //Decrement loop for performance
 
-        el = $sel.eq(i);
+        el = sel[i];
 
-        init = gaEvent_Init(el.attr('class'));
+        init = gaEvent_Init(el.className);
 
         //Stores the event label, either classname attr or a>title.
-        t = init.label.length > 0 ? init.label : (typeof el.attr('title') !== 'undefined' ? el.attr('title') : (typeof el.attr('href') !== 'undefined' ? el.attr('href') : 'Unknown anchor'));
+        t = init.label.length > 0 ? init.label : (typeof el.title !== 'undefined' ? el.title : (typeof el.href !== 'undefined' ? el.href : 'Unknown anchor'));
         
         (function(init, t) {
 
-            if (typeof el.touchstart !== 'undefined') { //If device has touchstart event, bind to it,
-                el.touchstart(function() {
+            if (typeof el.addEventListener === 'undefined') {
+                el.attachEvent("onmousedown", function() {
                     return gaEvent_TrackEvent(init, t);
-                }); 
+                });
             } else {
-                el.mousedown(function() { //but if not, all devices have mousedown.
+                el.addEventListener('mousedown', function() {
                     return gaEvent_TrackEvent(init, t);
-                }); 
-            }
-            
+                });
+            }            
         }(init, t)); //Bind anonymous function to copy local scope to its respective element.
         
     }
@@ -49,7 +48,6 @@ function gaEvent_TrackEvent(evt, label) {
     console.log('Label: ' + label);
     console.log('Value: ' + evt.value);
     console.log('Non-Interaction: ' + evt.opt_noninteraction);
-    //alert(evt.category);
                 
     //_gaq is the global used by GA
     if (typeof _gaq != "undefined") {
