@@ -5,31 +5,31 @@
 */
 $(function() {
 
-    var el, sel, i, init, t;
+    var el, $sel, i, init, t;
     
-    sel = $('.ga-event'); //Selector returns element with ga-event class. <a> tags preferred.
-    i = sel.length;
+    $sel = $('.ga-event'); //Selector returns element with ga-event class. <a> tags preferred.
+    i = $sel.length;
 
     while(i--) { //Decrement loop for performance
 
-        el = sel[i];
+        el = $sel.eq(i);
 
-        init = gaEvent_Init(el.className);
+        init = gaEvent_Init(el.attr('class'));
 
         //Stores the event label, either classname attr or a>title.
-        t = init.label.length > 0 ? init.label : (typeof el.title !== 'undefined' ? el.title : (typeof el.href !== 'undefined' ? el.href : 'Unknown anchor'));
+        t = init.label.length > 0 ? init.label : (typeof el.attr('title') !== 'undefined' ? el.attr('title') : (typeof el.attr('href') !== 'undefined' ? el.attr('href') : 'Unknown anchor'));       
         
         (function(init, t) {
 
-            if (typeof el.addEventListener === 'undefined') {
-                el.attachEvent("onmousedown", function() {
+            if (el.touchstart) { //If device has touchstart event, bind to it,
+                el.touchstart(function() {
                     return gaEvent_TrackEvent(init, t);
-                });
+                }); 
             } else {
-                el.addEventListener('mousedown', function() {
+                el.mousedown(function() { //but if not, all devices have mousedown.
                     return gaEvent_TrackEvent(init, t);
-                });
-            }            
+                }); 
+            }         
         }(init, t)); //Bind anonymous function to copy local scope to its respective element.
         
     }
