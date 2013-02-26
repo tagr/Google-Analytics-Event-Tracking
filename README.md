@@ -1,29 +1,31 @@
 Google Analytics Event Tracking (jQuery)
 ========================================
 
-Name:ga-event.js, ga-event.min.js (minified)
-Purpose: Capture link events in Google Analytics Event Tracking using CSS classnames
-Dependencies: jQuery (event binding), GA (_gaq object)
+<p>
+Name:ga-event.js, ga-event.min.js (minified)<br>
+Purpose: Capture link events in Google Analytics Event Tracking using CSS classnames<br>
+Dependencies: jQuery (event binding), GA (_gaq object)<br>
 Author: Andy Merhaut https://github.com/tagr
+</p>
 
 <p>I had to append event tracking to anchor elements unobtrusively, and customize attributes specified in the 
 Google Analytics ET Guide. Unfortunately, the CMS at my work strips HTML5 data-* attributes, so I could only 
 rely on CSS classnames. This solution uses classnames with appended data to customize reportable elements in 
 Event Tracking.</p>
 
-CSS class attribute does allow for n+1 declarations, and is not parsed out of SM, so with minimal pattern 
-matching we can extend its purpose for storing custom values for event tracking.
+<p>CSS class attribute does allow for n+1 declarations, and is not parsed out of SM, so with minimal pattern 
+matching we can extend its purpose for storing custom values for event tracking.</p>
 
-This version appends a mousedown (or touchstart) callback handler to anchor elements matching class 
-'ga-event'. This class is required to enable tracking on links. Mousedown was selected as it is slightly 
+<p>This version appends a mousedown (or touchstart) callback handler to anchor elements matching class 
+<b>'ga-event'</b>. This class is required to enable tracking on links. Mousedown was selected as it is slightly 
 faster than 'click' and is cross-browser compatible to not require a separate library to handle touch 
 events on a clickable element like a link. Use the patterns below to add custom parameters to each 
-trackable link's CSS class attributes.
+trackable link's CSS class attributes.</p>
 
-NOTE the classname prefixes are not case-sensitive, but the data portion will be sent to GA as it is written. 
-CamelCase is preferred. Also, do not include the square brackets [].
+<p><b>NOTE</b> the classname prefixes are not case-sensitive, but the data portion will be sent to GA as it is written. 
+CamelCase is preferred. Also, do not include the square brackets [].</p>
 
-Example:
+<b>Example:</b> 
 &lt;a href="#" class="ga-event ga-eventcat-MyCategory ga-eventaction-MyClick" title="This is the label"&gt;Track Me&lt;/a&gt;
 
 CSS CLASS NAME PATTERNS
@@ -37,8 +39,8 @@ CSS CLASS NAME PATTERNS
 </ul>
 
 
-<h5>Resources:</h5>
-Safari Web Content Guide: Handling Events
+<h3>Resources:</h3>
+<h5>Safari Web Content Guide: Handling Events</h5>
 //developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html
 
 <h5>Event Tracking - Web Tracking (ga.js)</h5>
