@@ -1,8 +1,8 @@
-google-analytics-event-tracking
-===============================
+Google Analytics Event Tracking (jQuery)
+========================================
 
 Name:ga-event.js, ga-event.min.js (minified)
-Purpose: Capture link events in Google Analytics Event Tracking
+Purpose: Capture link events in Google Analytics Event Tracking using CSS classnames
 Dependencies: jQuery (event binding), GA (_gaq object)
 Author: Andy Merhaut https://github.com/tagr
 
