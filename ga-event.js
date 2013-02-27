@@ -1,7 +1,8 @@
 /*
     ga-event.js Google Analytics Event Tracking (jQuery)
+    URL: //github.com/tagr/google-analytics-event-tracking
     Author: Andy Merhaut
-    Use, change, and distribution under MIT License.
+    Use, change, and distribution under MIT License (Last modified 2/2013).
 */
 $(function() {
 
