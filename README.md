@@ -28,8 +28,8 @@ CamelCase is preferred. Also, do not include the square brackets [].</p>
 <p>
     <h5>Script Reference</h5>
     <code>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-        <script type="text/javascript">
+        &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;
 
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-XXXXX-Y']); //YOUR TRACKING CODE
@@ -40,8 +40,8 @@ CamelCase is preferred. Also, do not include the square brackets [].</p>
                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
            })();
-        </script>
-        <script src="ga-event.js" defer="defer" async></script>
+        &lt;/script&gt;
+        &lt;script src="ga-event.js" defer="defer" async&gt;&lt;/script&gt;
     </code>
 </p>
 
