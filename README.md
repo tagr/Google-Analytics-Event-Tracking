@@ -41,7 +41,7 @@ CamelCase is preferred. Also, do not include the square brackets [].</p>
                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);<br>
            })();<br>
         &lt;/script&gt;<br>
-        &lt;script src="ga-event.js" defer="defer" async&gt;&lt;/script&gt;
+        <b>&lt;script src="ga-event.js" defer="defer" async&gt;&lt;/script&gt;</b>
     </code>
 </p>
 
