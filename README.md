@@ -28,19 +28,19 @@ CamelCase is preferred. Also, do not include the square brackets [].</p>
 <p>
     <h5>Script Reference</h5>
     <code>
-        &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">&lt;/script&gt;
-        &lt;script type="text/javascript"&gt;
+        &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">&lt;/script&gt;<br>
+        &lt;script type="text/javascript"&gt;<br><br>
 
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXX-Y']); //YOUR TRACKING CODE
-            _gaq.push(['_trackPageview']);
+            var _gaq = _gaq || [];<br>
+            _gaq.push(['_setAccount', 'UA-XXXXX-Y']); //YOUR TRACKING CODE<br>
+            _gaq.push(['_trackPageview']);<br><br>
 
-           (function() {
-               var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-               ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-               var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-           })();
-        &lt;/script&gt;
+           (function() {<br>
+               var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;<br>
+               ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';<br>
+               var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);<br>
+           })();<br>
+        &lt;/script&gt;<br>
         &lt;script src="ga-event.js" defer="defer" async&gt;&lt;/script&gt;
     </code>
 </p>
