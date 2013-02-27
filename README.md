@@ -9,7 +9,7 @@ Author: Andy Merhaut https://github.com/tagr
 </p>
 
 <p>I had to append event tracking to anchor elements unobtrusively, and customize attributes specified in the 
-Google Analytics ET Guide. Unfortunately, the CMS at my work strips HTML5 data-* attributes, so I could only 
+Google Analytics ET Guide. Unfortunately, the CMS at my work strips HTML5 <code>data-*</code> attributes, so I could only 
 rely on CSS classnames. This solution uses classnames with appended data to customize reportable elements in 
 Event Tracking.</p>
 
@@ -17,7 +17,7 @@ Event Tracking.</p>
 matching we can extend its purpose for storing custom values for event tracking.</p>
 
 <p>This version appends a mousedown (or touchstart) callback handler to anchor elements matching class 
-<b>'ga-event'</b>. This class is required to enable tracking on links. Mousedown was selected as it is slightly 
+<code>'ga-event'</code>. This class is required to enable tracking on links. Mousedown was selected as it is slightly 
 faster than 'click' and is cross-browser compatible to not require a separate library to handle touch 
 events on a clickable element like a link. Use the patterns below to add custom parameters to each 
 trackable link's CSS class attributes.</p>
@@ -25,8 +25,30 @@ trackable link's CSS class attributes.</p>
 <p><b>NOTE</b> the classname prefixes are not case-sensitive, but the data portion will be sent to GA as it is written. 
 CamelCase is preferred. Also, do not include the square brackets [].</p>
 
-<b>Example:</b> 
-<code>&lt;a href="#" class="ga-event ga-eventcat-MyCategory ga-eventaction-MyClick" title="This is the label"&gt;Track Me&lt;/a&gt;</code>
+<p>
+    <h5>Script Reference</h5>
+    <code>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-XXXXX-Y']); //YOUR TRACKING CODE
+            _gaq.push(['_trackPageview']);
+
+           (function() {
+               var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+               ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+               var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+           })();
+        </script>
+        <script src="ga-event.js" defer="defer" async></script>
+    </code>
+</p>
+
+<p>
+    <h5>Example:</h5> 
+    <code>&lt;a href="#" class="ga-event ga-eventcat-MyCategory ga-eventaction-MyClick" title="This is the label"&gt;Track Me&lt;/a&gt;</code>
+</p>
 
 <h3>CSS CLASS NAME PATTERNS</h3>
 <ul>
