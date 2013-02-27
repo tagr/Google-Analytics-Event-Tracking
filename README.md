@@ -26,16 +26,16 @@ trackable link's CSS class attributes.</p>
 CamelCase is preferred. Also, do not include the square brackets [].</p>
 
 <b>Example:</b> 
-&lt;a href="#" class="ga-event ga-eventcat-MyCategory ga-eventaction-MyClick" title="This is the label"&gt;Track Me&lt;/a&gt;
+<code>&lt;a href="#" class="ga-event ga-eventcat-MyCategory ga-eventaction-MyClick" title="This is the label"&gt;Track Me&lt;/a&gt;</code>
 
 <h3>CSS CLASS NAME PATTERNS</h3>
 <ul>
-<li>ga-event = track this element (required)</li>
-<li>ga-eventcat-[CategoryName] = default:Links</li>
-<li>ga-eventaction-[ActionName] = default:Click</li>
-<li>ga-eventlabel-[LabelName] = default:a>title [if using classname, then CamelCaseOnly]</li>
-<li>ga-eventvalue-[n] = n(int) > -1 default:0</li>
-<li>ga-eventnoninteraction-[true||false] = default:false (GA: opt_noninteraction)</li>
+<li><code>ga-event = track this element (required)</code></li>
+<li><code>ga-eventcat-[CategoryName] = default:Links</code></li>
+<li><code>ga-eventaction-[ActionName] = default:Click</code></li>
+<li><code>ga-eventlabel-[LabelName] = default:a>title [if using classname, then CamelCaseOnly]</code></li>
+<li><code>ga-eventvalue-[n] = n(int) > -1 default:0</code></li>
+<li><code>ga-eventnoninteraction-[true||false] = default:false (GA: opt_noninteraction)</code></li>
 </ul>
 
 
