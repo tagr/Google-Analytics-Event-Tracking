@@ -26,7 +26,7 @@ trackable link's CSS class attributes.</p>
 CamelCase is preferred. Also, do not include the square brackets [].</p>
 
 <p>
-    <h5>Script Reference</h5>
+    ## <h5>Script Reference</h5>
     <code>
         &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">&lt;/script&gt;<br>
         &lt;script type="text/javascript"&gt;<br><br>
