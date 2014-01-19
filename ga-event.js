@@ -9,11 +9,11 @@
     // Create the defaults once
     var pluginName = "gaEvent",
     defaults = {
-        'category' : 'Links',
-        'action' : 'Click',
-        'label' : 'gaEvent',
-        'value' : '0',
-        'opt_noninteraction' : 1
+        category : 'Links',
+        action : 'Click',
+        label : 'gaEvent',
+        value : '0',
+        opt_noninteraction : 1
     };
 
     // The actual plugin constructor
@@ -34,11 +34,12 @@
 
             //The actual event tracking function
             var gaEvent_Event = function() {
-                console.log(el.getAttribute('title'));
 
-                if (typeof ga == 'function') {
+                if (typeof ga == 'function') { //Universal tracking
                     ga('send', 'event', config.category, config.action, config.label, config.value, {'nonInteraction': config.opt_noninteraction});
                     console.log('event sent');
+                } else if (typeof _gaq == 'function') { //Older ga.js
+                    _gaq.push(['_trackEvent', config.category, config.action, config.label, config.value, config.opt_noninteraction]);
                 }
             };
 
