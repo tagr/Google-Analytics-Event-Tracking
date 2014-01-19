@@ -33,10 +33,39 @@
 
 <p>This plugin, a work-in-progress by <a href="https://github.com/tagr" class="user-mention">@tagr</a>, provides a method to add event tracking to any element(s) you wish with jQuery.</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>GAEvent is a small plugin that enables event tracking in Google Analytics (by <a href="https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide">ga.js</a> or the newer <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/">Universal Analytics</a>)</p>
 
-<p>Made with love by Andy Merhaut (<a href="https://github.com/tagr" class="user-mention">@tagr</a>)</p>
+<p>The syntax to start tracking is very simple:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'.yourElements'</span><span class="p">).</span><span class="nx">gaEvent</span><span class="p">();</span>
+</pre></div>
+
+<p>If you want to customize the data sent to Google, just add the options like so:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'.yourElements'</span><span class="p">).</span><span class="nx">gaEvent</span><span class="p">({</span>
+  <span class="nx">action</span><span class="o">:</span> <span class="s1">'tap'</span><span class="p">,</span>
+  <span class="nx">category</span><span class="o">:</span> <span class="s1">'Google Analytics Event Tracking Category'</span><span class="p">,</span>
+  <span class="nx">label</span><span class="o">:</span> <span class="s1">'Custom Label'</span><span class="p">,</span>
+  <span class="nx">value</span><span class="o">:</span> <span class="mf">1.25</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h3>
+
+<p><a href="https://github.com/tagr">Andy Merhaut</a>: Twitter- <a href="http://twitter.com/foobarjs">@foobarjs</a> Site-<a href="http://fishees.com">fishees.com</a></p>
+
+<blockquote>
+<p>I am a web developer and photographer in Clearwater, Florida, USA</p>
+</blockquote>
+
+<h3>
+<a name="references" class="anchor" href="#references"><span class="octicon octicon-link"></span></a>References</h3>
+
+<hr><ul>
+<li>
+<a href="https://developers.google.com/analytics/devguides/collection/upgrade/reference/gajs-analyticsjs#events">Reference - Complete Web Upgrade: ga.js to analytics.js</a> </li>
+</ul>
         </section>
 
         <aside id="sidebar">
