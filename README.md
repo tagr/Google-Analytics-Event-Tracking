@@ -1,7 +1,7 @@
 Google Analytics Event Tracking Plugin for jQuery
 =========
 
-GAEvent is a small plugin that enables event tracking in Google Analytics (by [ga.js] or the newer [Universal Analytics])
+GAEvent is a small plugin (<600B minified &amp; compressed) that enables event tracking in Google Analytics (by [ga.js] or the newer [Universal Analytics])
 
 GAEvent uses jQuery, so the syntax to start tracking is very simple:
 
