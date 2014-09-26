@@ -20,8 +20,8 @@ $('.yourElements').gaEvent({
 });
 ```
 ### Author
-[Andy Merhaut]: Twitter- [@foobarjs] Site-[fishees.com]
->I am a web developer and photographer in Clearwater, Florida, USA
+[Andy Merhaut]: Twitter- [@foobarjs] Site-[andymerhaut.com]
+>I am a web developer in Clearwater, Florida, USA
 
 ### References
 ----
