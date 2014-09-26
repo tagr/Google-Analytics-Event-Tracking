@@ -20,7 +20,7 @@ $('.yourElements').gaEvent({
 });
 ```
 ### Author
-[Andy Merhaut]: Twitter- [@foobarjs] Site-[andymerhaut.com]
+[Andy Merhaut]: Twitter- [@foobarjs] Site-[https://andymerhaut.com]
 >I am a web developer in Clearwater, Florida, USA
 
 ### References
